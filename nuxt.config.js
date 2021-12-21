@@ -65,6 +65,10 @@ export default {
     },
   },
 
+  serverMiddleware:[
+    {handler:"~/server/server.ts"}
+  ],
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 }
