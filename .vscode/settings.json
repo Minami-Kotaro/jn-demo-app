@@ -1,0 +1,19 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll": true
+  },
+  "eslint.format.enable": true,
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+
+  "eslint.validate": ["javascript", "typescript", "vue", "json"],
+  "cSpell.words": [
+    "Nuxt",
+    "nuxtjs"
+  ],
+  "typescript.tsdk": "node_modules\\typescript\\lib"
+}

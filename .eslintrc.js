@@ -2,14 +2,29 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true,
+    node: true
+  },
+  parserOptions: {
+    ecmaFeatures: {
+      legacyDecorators: true
+    }
   },
   extends: [
     '@nuxtjs/eslint-config-typescript',
-    'plugin:nuxt/recommended',
     'prettier',
+    'prettier/vue',
+    'plugin:prettier/recommended',
+    'plugin:nuxt/recommended'
   ],
-  plugins: [],
+  plugins: ['prettier'],
   // add your custom rules here
-  rules: {},
+  rules: {
+    "no-console": "off",
+    "vue/html-self-closing": ["error", {
+      "html": {
+        "void": "always"
+      }
+    }],
+    "unicorn/number-literal-case": "off"
+  }
 }
