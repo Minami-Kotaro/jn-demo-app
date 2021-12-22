@@ -10,9 +10,6 @@
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "eslint.validate": ["javascript", "typescript", "vue", "json"],
-  "cSpell.words": [
-    "Nuxt",
-    "nuxtjs"
-  ],
+  "cSpell.words": ["Nuxt", "nuxtjs"],
   "typescript.tsdk": "node_modules\\typescript\\lib"
 }
