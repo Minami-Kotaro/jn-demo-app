@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:12
+    container_name: jn-demo-app-db
+    environment:
+      POSTGRES_PASSWORD: "#jndemoappdb#"
+    ports:
+      - 55432:5432
+    restart: always
+    tty: true
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+      - ./data:/docker-entrypoint-initdb.d/data
+      - jn-demo-app_db_volume:/var/lib/postgresql/data
+volumes:
+  jn-demo-app_db_volume:
+    external: false

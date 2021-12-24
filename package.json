@@ -10,7 +10,9 @@
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
     "lint": "npm run lint:js && npm run lint:prettier",
-    "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix"
+    "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix",
+    "db:up": "docker-compose -f operations/jnDemoAppDb/docker-compose.yml up",
+    "db:down": "docker-compose -f operations/jnDemoAppDb/docker-compose.yml down -v"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
