@@ -1,0 +1,268 @@
+openapi: 3.0.0
+info:
+  title: jn-demo-app API
+  description: Jnデモアプリ用API
+  version: 1.0.0
+servers:
+  - url: https://*/api/v1
+  - url: https://localhost:3000/api/v1
+tags:
+  - name: Authentication
+  - name: Contracts
+paths:
+  # Authentication
+  "/signin":
+    post:
+      tags:
+        - Authentication
+      summary: トークン発行
+      description: トークンの発行を行う
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/signinRequest"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/tokenResponse"
+
+  # Contracts
+  "/contracts":
+    post:
+      tags:
+        - Contracts
+      summary: 契約先登録
+      description: 契約先を登録する
+      security:
+        - accessToken: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/postContractRequest"
+      responses:
+        "200":
+          description: ok
+    get:
+      tags:
+        - Contracts
+      summary: 契約先一覧取得
+      description: 契約先一覧を取得する
+      security:
+        - accessToken: []
+      responses:
+        "200":
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/contractListResponse"
+  "/contracts/{contractId}":
+    put:
+      tags:
+        - Contracts
+      summary: 契約更新
+      description: 契約を更新する
+      security:
+        - accessToken: []
+      parameters:
+        - in: path
+          name: contractId
+          description: 契約書ID
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/putContractRequest"
+      responses:
+        "200":
+          description: ok
+    delete:
+      tags:
+        - Contracts
+      summary: 契約削除
+      description: 契約を削除する
+      security:
+        - accessToken: []
+      parameters:
+        - in: path
+          name: contractId
+          description: 契約ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: ok
+
+components:
+  securitySchemes:
+    accessToken:
+      description: API アクセストークン
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    # 認証
+    signinRequest:
+      description: ログインリクエストモデル
+      type: object
+      properties:
+        managerMailAddress:
+          description: メールアドレス
+          type: string
+        password:
+          description: パスワード
+          type: string
+      required: [managerMailAddress, password]
+    tokenResponse:
+      description: トークンレスポンスモデル
+      type: object
+      properties:
+        accessToken:
+          description: アクセストークン
+          type: string
+
+    # 契約先
+    postContractRequest:
+      description: 契約登録リクエストモデル
+      type: object
+      properties:
+        contractorName:
+          description: 契約先名
+          type: string
+        contractManagerId:
+          description: 契約責任者ID
+          type: integer
+        userId:
+          description: 利用者ID
+          type: integer
+        salesStaffName:
+          description: 営業担当者
+          type: string
+        contractDate:
+          description: 契約日
+          type: string
+          format: date
+        validStartDate:
+          description: 有効期限開始日
+          type: string
+          format: date
+        validEndDate:
+          description: 有効期限終了日
+          type: string
+          format: date
+      required: [
+        contractorName,
+        contractManagerId,
+        userId,
+        salesStaffName,
+        contractDate,
+        validStartDate,
+        validEndDate
+        ]
+    putContractRequest:
+      description: 契約更新リクエストモデル
+      type: object
+      properties:
+        contractorName:
+          description: 契約先名
+          type: string
+        contractManagerId:
+          description: 契約責任者ID
+          type: integer
+        userId:
+          description: 利用者ID
+          type: integer
+        salesStaffName:
+          description: 営業担当者
+          type: string
+        contractDate:
+          description: 契約日
+          type: string
+          format: date
+        validStartDate:
+          description: 有効期限開始日
+          type: string
+          format: date
+        validEndDate:
+          description: 有効期限終了日
+          type: string
+          format: date
+      required: [
+        contractorName,
+        contractManagerId,
+        userId,
+        salesStaffName,
+        contractDate,
+        validStartDate,
+        validEndDate
+        ]
+    contractListResponse:
+      description: 契約一覧取得レスポンスモデル
+      type: array
+      items:
+        $ref: "#/components/schemas/contractResponse"
+    contractResponse:
+      description: 契約取得レスポンスモデル
+      type: object
+      properties:
+        contract_id:
+          description: 契約番号
+          type: string
+        contractorName:
+          description: 契約先名
+          type: string
+        contractManagerName:
+          description: 契約責任者名
+          type: string
+        contractManagerMailAddress:
+          description: 契約責任者メールアドレス
+          type: string
+        userName:
+          description: 利用者名
+          type: string
+        userMailAddress:
+          description: 利用者メールアドレス
+          type: string
+        renewalCount:
+          description: 更新回数
+          type: integer
+        salesStaffName:
+          description: 営業担当者
+          type: string
+        contractDate:
+          description: 契約日
+          type: string
+          format: date
+        validStartDate:
+          description: 有効期限開始日
+          type: string
+          format: date
+        validEndDate:
+          description: 有効期限終了日
+          type: string
+          format: date
+        idDeleted:
+          description: 削除フラグ
+          type: boolean
+      required: [
+        contract_id,
+        contractorName,
+        contractManagerName,
+        contractManagerMailAddress,
+        userName,
+        userMailAddress,
+        renewalCount,
+        salesStaffName,
+        contractDate,
+        validStartDate,
+        validEndDate,
+        idDeleted ]

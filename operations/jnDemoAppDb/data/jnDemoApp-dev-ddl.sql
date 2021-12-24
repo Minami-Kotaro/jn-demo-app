@@ -1,5 +1,5 @@
 -- Project Name : jnDemoApp
--- Date/Time    : 2021/12/23 19:24:52
+-- Date/Time    : 2021/12/24 11:14:42
 -- Author       : 52021
 -- RDBMS Type   : PostgreSQL
 -- Application  : A5:SQL Mk-2
@@ -55,11 +55,15 @@ create table m_contracts (
 create table m_managers (
   manager_id integer not null
   , manager_name varchar(24) not null
+  , manager_mail_address varchar(256) not null
   , password varchar(60) not null
   , create_date timestamp not null
   , update_date timestamp not null
   , constraint m_managers_PKC primary key (manager_id)
 ) ;
+
+alter table m_managers add constraint m_managers_IX1
+  unique (manager_mail_address) ;
 
 comment on table m_users is '利用者';
 comment on column m_users.user_id is '利用者ID';
@@ -92,6 +96,7 @@ comment on column m_contracts.update_date is '更新日時';
 comment on table m_managers is '管理者';
 comment on column m_managers.manager_id is '管理者ID';
 comment on column m_managers.manager_name is '管理者名';
+comment on column m_managers.manager_mail_address is '管理者メールアドレス';
 comment on column m_managers.password is 'パスワード';
 comment on column m_managers.create_date is '作成日時';
 comment on column m_managers.update_date is '更新日時';
