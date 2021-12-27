@@ -1,7 +1,7 @@
-import { contractListResponse } from "../apiModels/response";
+import { ContractListResponse } from "../apiModels/response";
 import * as contractRepository  from "../repositories/contractRepository";
 
-export async function FetchContracts():Promise<contractListResponse[]>{
+export async function FetchContracts():Promise<ContractListResponse[]>{
 
   const contracts = await contractRepository.SelectContracts();
   return contracts.map(x=>({

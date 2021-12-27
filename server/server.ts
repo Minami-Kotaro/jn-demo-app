@@ -1,13 +1,15 @@
 import express, { Express, Response, Request } from "express"
 import path from "path";
-import { useExpressServer } from "routing-controllers";
+import { useExpressServer, Action } from "routing-controllers";
+import * as authorization from "./authorization/authorization"
 import { createConnection } from "typeorm";
 import { option } from "./db/option";
+
 
 let app = async() => {
   const app: Express = express()
 
-  const connection = await createConnection(option).catch(err=>{
+  await createConnection(option).catch(err=>{
     console.log(err)
     throw Error(err)})
 
@@ -17,7 +19,10 @@ let app = async() => {
 
   useExpressServer(app,{
     routePrefix:"/api/v1",
+    authorizationChecker:authorization.authorizationCheck,
+    currentUserChecker:authorization.currentUserCheck,
     controllers: [path.join(__dirname + "/controllers/*.js")],
+    validation: true,
     development: false,
   })
 

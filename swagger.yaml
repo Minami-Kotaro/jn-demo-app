@@ -115,13 +115,13 @@ components:
       description: ログインリクエストモデル
       type: object
       properties:
-        managerMailAddress:
+        mailAddress:
           description: メールアドレス
           type: string
         password:
           description: パスワード
           type: string
-      required: [managerMailAddress, password]
+      required: [mailAddress, password]
     tokenResponse:
       description: トークンレスポンスモデル
       type: object

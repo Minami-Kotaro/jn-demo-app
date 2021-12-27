@@ -1,7 +1,7 @@
 -- 管理者
 INSERT INTO m_managers
 VALUES
-(1,'管理者1','password',NOW(),NOW());
+(1,'管理者1','example.com','password',NOW(),NOW());
 
 SELECT setval('seq_manager_id',(SELECT max(manager_id) FROM m_managers));
 

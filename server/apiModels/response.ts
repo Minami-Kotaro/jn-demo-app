@@ -1,5 +1,7 @@
-
-export interface contractListResponse {
+export interface TokenResponse {
+  accessToken: string
+}
+export interface ContractListResponse {
   contractId:number;
   contractorName:string;
   contractManagerName:string;
