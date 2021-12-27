@@ -250,7 +250,7 @@ components:
           description: 有効期限終了日
           type: string
           format: date
-        idDeleted:
+        isDeleted:
           description: 削除フラグ
           type: boolean
       required: [
@@ -265,4 +265,4 @@ components:
         contractDate,
         validStartDate,
         validEndDate,
-        idDeleted ]
+        isDeleted ]

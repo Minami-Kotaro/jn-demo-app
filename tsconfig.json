@@ -6,16 +6,19 @@
     "lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],
     "esModuleInterop": true,
     "allowJs": true,
+    "allowUnusedLabels":true,
     "sourceMap": true,
     "strict": true,
     "noEmit": true,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "strictPropertyInitialization":false,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"],
-      "@/*": ["./*"]
+      "@/*": ["./*"],
     },
     "types": ["@nuxt/types", "@nuxtjs/axios", "@types/node"]
   },
-  "exclude": ["node_modules", ".nuxt", "dist"]
+  "exclude": ["node_modules", ".nuxt", "dist",]
 }

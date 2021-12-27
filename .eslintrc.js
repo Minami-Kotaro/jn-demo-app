@@ -17,6 +17,7 @@ module.exports = {
   plugins: [],
   // add your custom rules here
   rules: {
+    camelcase: [{ properties: "never" }],
     "no-console": "off",
     "vue/html-self-closing": [
       "error",

@@ -15,7 +15,7 @@
 create table m_users (
   user_id integer not null
   , user_name varchar(24) not null
-  , user_mai_address varchar(256) not null
+  , user_mail_address varchar(256) not null
   , create_date timestamp not null
   , update_date timestamp not null
   , constraint m_users_PKC primary key (user_id)
@@ -68,7 +68,7 @@ alter table m_managers add constraint m_managers_IX1
 comment on table m_users is '利用者';
 comment on column m_users.user_id is '利用者ID';
 comment on column m_users.user_name is '利用者名';
-comment on column m_users.user_mai_address is '利用者メールアドレス';
+comment on column m_users.user_mail_address is '利用者メールアドレス';
 comment on column m_users.create_date is '作成日時';
 comment on column m_users.update_date is '更新日時';
 

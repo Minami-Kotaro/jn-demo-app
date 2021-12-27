@@ -1,4 +1,6 @@
 export default {
+  mode: "spa",
+  ssr: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: "%s - jn-demo-app",
@@ -48,8 +50,6 @@ export default {
   vuetify: {
     customVariables: ["~/assets/variables.scss"],
   },
-
-  serverMiddleware: [{ handler: "~/server/server.ts" }],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
