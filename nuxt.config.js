@@ -18,7 +18,7 @@ export default {
   },
 
   generate:{
-    dir: "dist/client",
+    dir: "dist/public",
     fallback: "404.html"
   },
 

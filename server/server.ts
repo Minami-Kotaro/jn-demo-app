@@ -5,6 +5,7 @@ import * as authorization from "./authorization/authorization"
 import { createConnection } from "typeorm"
 import { option } from "./db/option"
 
+const port = process.env.PORT || 5000
 let app = async () => {
   const app: Express = express()
 
@@ -24,12 +25,12 @@ let app = async () => {
   })
 
   //クライアント
-  app.use(express.static(path.join(__dirname, "../client")))
+  app.use(express.static(path.join(__dirname, "../public")))
   app.get("*", function (_, res) {
-    res.sendFile(path.resolve(__dirname, "../client/index.html"))
+    res.sendFile(path.resolve(__dirname, "../public/index.html"))
   })
 
-  app.listen(3000, () => console.log("Example app listening on port 3000!"))
+  app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 }
 
 export default app()
