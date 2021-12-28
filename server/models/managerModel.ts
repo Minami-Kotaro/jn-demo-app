@@ -1,6 +1,6 @@
-export interface ManagerModel{
-  managerId:number;
-  managerName:string;
-  managerMailAddress:string;
-  password:string;
+export interface ManagerModel {
+  managerId: number
+  managerName: string
+  managerMailAddress: string
+  password: string
 }

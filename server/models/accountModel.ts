@@ -1,4 +1,4 @@
 export interface AccountModel {
-  id:number,
-  mailAddress:string
+  id: number
+  mailAddress: string
 }

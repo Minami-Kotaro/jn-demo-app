@@ -1,53 +1,53 @@
-import { IsDateString, IsInt, IsNotEmpty, MinLength } from "class-validator";
+import { IsDateString, IsInt, IsNotEmpty, MinLength } from "class-validator"
 
 export class SignInRequest {
   @IsNotEmpty()
-  mailAddress: string;
+  mailAddress: string
   @IsNotEmpty()
   @MinLength(6)
-  password: string;
+  password: string
 }
 
-export class PostContractRequest{
+export class PostContractRequest {
   @IsNotEmpty()
-  contractorName:string;
-  @IsNotEmpty()
-  @IsInt()
-  contractManagerId:number;
+  contractorName: string
   @IsNotEmpty()
   @IsInt()
-  userId:number;
+  contractManagerId: number
   @IsNotEmpty()
-  salesStaffName:string;
+  @IsInt()
+  userId: number
   @IsNotEmpty()
-  @IsDateString()
-  contractDate:Date;
-  @IsNotEmpty()
-  @IsDateString()
-  validStartDate:Date;
+  salesStaffName: string
   @IsNotEmpty()
   @IsDateString()
-  validEndDate:Date;
+  contractDate: Date
+  @IsNotEmpty()
+  @IsDateString()
+  validStartDate: Date
+  @IsNotEmpty()
+  @IsDateString()
+  validEndDate: Date
 }
 
-export class PutContractRequest{
+export class PutContractRequest {
   @IsNotEmpty()
-  contractorName:string;
-  @IsNotEmpty()
-  @IsInt()
-  contractManagerId:number;
+  contractorName: string
   @IsNotEmpty()
   @IsInt()
-  userId:number;
+  contractManagerId: number
   @IsNotEmpty()
-  salesStaffName:string;
+  @IsInt()
+  userId: number
   @IsNotEmpty()
-  @IsDateString()
-  contractDate:Date;
-  @IsNotEmpty()
-  @IsDateString()
-  validStartDate:Date;
+  salesStaffName: string
   @IsNotEmpty()
   @IsDateString()
-  validEndDate:Date;
+  contractDate: Date
+  @IsNotEmpty()
+  @IsDateString()
+  validStartDate: Date
+  @IsNotEmpty()
+  @IsDateString()
+  validEndDate: Date
 }

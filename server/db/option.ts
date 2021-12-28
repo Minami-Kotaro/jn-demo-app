@@ -1,24 +1,26 @@
-import { ConnectionOptions } from "typeorm";
-import dotenv from "dotenv";
+import { ConnectionOptions } from "typeorm"
+import dotenv from "dotenv"
 
 const isProduction = process.env.NODE_ENV === "production"
 
 if (!isProduction) {
-  dotenv.config();
+  dotenv.config()
 }
 
-const sslOption = isProduction ? {
-  ssl: true,
-  extra: {
-    ssl: {
-      rejectunauthorized: false,
-    },
-  }
-} : {}
+const sslOption = isProduction
+  ? {
+      ssl: true,
+      extra: {
+        ssl: {
+          rejectunauthorized: false,
+        },
+      },
+    }
+  : {}
 
 const port = Number(process.env.DB_PORT) || 5432
 
-export const option:ConnectionOptions = {
+export const option: ConnectionOptions = {
   type: "postgres",
   host: process.env.DB_HOST,
   port: port,
@@ -29,5 +31,5 @@ export const option:ConnectionOptions = {
   entities: [__dirname + "/entity/*.js"],
   synchronize: false,
   logging: false,
-  ...sslOption
+  ...sslOption,
 }
