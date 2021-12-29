@@ -24,9 +24,9 @@ let app = async () => {
   })
 
   //クライアント
-  app.use(express.static(path.join(__dirname, "../public")))
+  app.use(express.static(path.join(__dirname, "..")))
   app.get("*", function (_, res) {
-    res.sendFile(path.resolve(__dirname, "../public/index.html"))
+    res.sendFile(path.resolve(__dirname, "../index.html"))
   })
 
   app.listen(port, () => console.log(`Example app listening on port ${port}!`))
