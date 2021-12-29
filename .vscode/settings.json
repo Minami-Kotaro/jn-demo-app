@@ -10,6 +10,11 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "eslint.validate": ["javascript", "typescript", "vue", "json"],
-  "cSpell.words": ["Nuxt", "nuxtjs"],
+  "cSpell.words": [
+    "initialise",
+    "Nuxt",
+    "nuxtjs",
+    "vuex"
+  ],
   "typescript.tsdk": "node_modules\\typescript\\lib"
 }
