@@ -1,3 +1,4 @@
+const port = process.env.PORT || 5000
 export default {
   mode: "spa",
   ssr: false,
@@ -54,7 +55,7 @@ export default {
 
   proxy: {
     "/api": {
-      target: "http://localhost:5000",
+      target: `http://localhost:${port}`,
       pathRewrite: {
         "^/api/": "/api/"
       }
