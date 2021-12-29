@@ -1,7 +1,7 @@
 <template>
   <div class="bg d-flex justify-center">
     <div class="login-form-box mt-4">
-      <div class="login-form-title pa-4">License Manager</div>
+      <div class="login-form-title pa-4">Contract Manager</div>
       <div class="d-flex justify-center flex-wrap">
         <div class="item-width">
           <v-text-field color="#1C74B7" background-color="#edf5fa" label=" ID" autofocus />
@@ -23,7 +23,7 @@ export default defineComponent ({
   setup(){
     const router = useRouter()
     const handleClickSignInButton = () => {
-      router.push('/LicenseManage')
+      router.push('/ContractManage')
     }
     return {handleClickSignInButton}
   }
