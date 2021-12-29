@@ -21,7 +21,7 @@ export class Client {
         "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${Token.instance?.accessToken}`,
       },
-      validateStatus: (status: number): boolean => status < 500, // ステータスコードが500以上の時リジェクト
+      validateStatus: (status: number): boolean => status < 400, // ステータスコードが500以上の時リジェクト
       withCredentials: true,
     })
     this._instance.interceptors.response.use(
@@ -61,7 +61,7 @@ export async function SignIn<T = TokenResponse>(
         "X-Requested-With": "XMLHttpRequest",
         "Access-Control-Allow-Origin": "*",
       },
-      validateStatus: (status: number): boolean => status < 500,
+      validateStatus: (status: number): boolean => status < 400,
       withCredentials: true,
     })
     const basePath = buildBasePath(setting)

@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "run-p dev:client dev:server",
+    "dev:client": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "watch:server": "tsc -watch -p tsconfig-server.json",
