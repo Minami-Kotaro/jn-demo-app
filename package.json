@@ -10,7 +10,7 @@
     "watch:server": "tsc -watch -p tsconfig-server.json",
     "build:server": "tsc -b tsconfig-server.json",
     "serve:server": "nodemon ./dist/server/server.js",
-    "dev:server": "run-s watch:server serve:server",
+    "dev:server": "run-p watch:server serve:server",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
