@@ -15,7 +15,7 @@
     <div class="pa-1 edit-btn-column"></div>
   </div>
   <div class="d-flex list-row mt-4 mx-4">
-    <!-- v-for="item in licenseData" :key="item.contractNum" -->
+    <!-- v-for="item in contracts" :key="item.contractNum" -->
     <div class="pa-1 contract-num-column">{{contractNum}}</div>
     <div class="pa-1 contractor-column flex-grow-1">{{contractorName}}</div>
     <div class="pa-1 service-user-column flex-grow-1">{{serviceUserName}}</div>
@@ -45,7 +45,7 @@ export default defineComponent ({
   setup(){
     const router = useRouter()
     const handleClickSignInButton = () => {
-      router.push('/LicenseManage')
+      router.push('/ContractManage')
     }
     return {handleClickSignInButton}
   }

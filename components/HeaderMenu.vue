@@ -1,7 +1,7 @@
 <template>
   <div class="header-main d-flex justify-space-between pa-4">
     <div class="header-title">
-      License Manager
+      Contract Manager
     </div>
     <div class="d-flex align-center">
       <v-btn @click="handleClickLogOutButton">Log out</v-btn>
