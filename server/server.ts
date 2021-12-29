@@ -15,7 +15,6 @@ let app = async () => {
   })
 
   useExpressServer(app, {
-    cors: true,
     routePrefix: "/api/v1",
     authorizationChecker: authorization.authorizationCheck,
     currentUserChecker: authorization.currentUserCheck,

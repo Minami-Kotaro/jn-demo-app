@@ -1,11 +1,13 @@
 import { Store } from "vuex"
 import { getModule } from "vuex-module-decorators"
-import login from "~/store/login"
+import LoginModule from "@/store/login"
 
-let loginStore: login
+let loginStore: LoginModule
+let routerStore: Store<any>
 
 function initialiseStores(store: Store<any>): void {
-  loginStore = getModule(login, store)
+  loginStore = getModule(LoginModule, store)
+  routerStore = store
 }
 
-export { initialiseStores, loginStore }
+export { initialiseStores, loginStore, routerStore }
