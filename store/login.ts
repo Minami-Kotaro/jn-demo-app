@@ -38,6 +38,7 @@ export default class LoginModule extends VuexModule {
       SetToken(response.data)
       Token.New()
       Client.RenewInstance()
+      routerStore.$router.push("/LicenseManage")
     } catch (err) {
       alert(err)
     }

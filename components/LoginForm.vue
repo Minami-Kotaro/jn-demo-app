@@ -24,7 +24,6 @@ export default defineComponent ({
     const mailAddress = computed({
       get: () => loginStore.loginForm.mailAddress,
       set: (value: string) => {
-        console.log("set")
         loginStore.inputLoginForm(
           {
             mailAddress: value,
