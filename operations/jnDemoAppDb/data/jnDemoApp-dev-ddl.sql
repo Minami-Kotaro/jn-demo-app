@@ -1,5 +1,5 @@
 -- Project Name : jnDemoApp
--- Date/Time    : 2021/12/24 11:14:42
+-- Date/Time    : 2021/12/28 15:45:59
 -- Author       : 52021
 -- RDBMS Type   : PostgreSQL
 -- Application  : A5:SQL Mk-2
@@ -36,7 +36,7 @@ create table m_contract_managers (
 --* RestoreFromTempTable
 create table m_contracts (
   contract_id integer not null
-  , contractor_name varchar(24)
+  , contractor_name varchar(24) not null
   , contract_manager_id integer not null
   , user_id integer not null
   , renewal_count integer not null
@@ -64,6 +64,12 @@ create table m_managers (
 
 alter table m_managers add constraint m_managers_IX1
   unique (manager_mail_address) ;
+
+alter table m_contracts
+  add constraint m_contracts_FK1 foreign key (user_id) references m_users(user_id);
+
+alter table m_contracts
+  add constraint m_contracts_FK2 foreign key (contract_manager_id) references m_contract_managers(contract_manager_id);
 
 comment on table m_users is '利用者';
 comment on column m_users.user_id is '利用者ID';
