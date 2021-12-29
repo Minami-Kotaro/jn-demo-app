@@ -36,7 +36,8 @@ export default {
     // https://go.nuxtjs.dev/typescript
     "@nuxt/typescript-build",
     // https://go.nuxtjs.dev/vuetify
-    "@nuxtjs/vuetify",
+    '@nuxtjs/vuetify',
+    '@nuxtjs/composition-api/module'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -58,4 +59,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  plugins: ['@plugins/composition-api'],
+
+  generate:{
+    interval: 2000,
+  }
 }

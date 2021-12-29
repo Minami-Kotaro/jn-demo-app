@@ -1,9 +1,12 @@
 <template>
-  <div>HelloWorld</div>
+  <div><login-form/></div>
 </template>
 
 <script lang="ts">
-export default {
-  name: "IndexPage",
-}
+import { defineComponent } from '@vue/composition-api';
+
+export default defineComponent ({
+  setup(){
+  }
+});
 </script>
