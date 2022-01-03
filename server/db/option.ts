@@ -12,7 +12,7 @@ const sslOption = isProduction
       ssl: true,
       extra: {
         ssl: {
-          rejectunauthorized: false,
+          rejectUnauthorized: false,
         },
       },
     }
