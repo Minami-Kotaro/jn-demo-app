@@ -18,8 +18,8 @@
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix",
     "db:up": "docker-compose -f operations/jnDemoAppDb/docker-compose.yml up",
     "db:down": "docker-compose -f operations/jnDemoAppDb/docker-compose.yml down -v",
-    "build": "run-s build:client build:server",
-    "start": "./dist/server/server.js"
+    "build": "run-s generate build:server",
+    "start": "node ./dist/server/server.js"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
