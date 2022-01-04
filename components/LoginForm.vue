@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import{ computed, defineComponent } from '@vue/composition-api'
-import{loginStore} from "@/store"
+import{contractListStore, loginStore} from "@/store"
 
 export default defineComponent ({
   setup(){
@@ -45,6 +45,7 @@ export default defineComponent ({
 
     const handleClickSignInButton = (): void => {
       loginStore.SignIn(loginStore.loginForm)
+      contractListStore.getContracts()
     }
     return {
       mailAddress,

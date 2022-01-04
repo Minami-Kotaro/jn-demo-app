@@ -4,30 +4,27 @@
     <div class="pa-1 contract-num-column">契約番号</div>
     <div class="pa-1 contractor-column flex-grow-1">契約先名</div>
     <div class="pa-1 service-user-column flex-grow-1">利用先</div>
-    <div class="pa-1 service-name-column flex-grow-1">サービス</div>
-    <div class="pa-1 update-num-column">更新回数</div>
-    <div class="pa-1 apply-num-column">申込件数</div>
+    <div class="pa-1 update-count-column">更新回数</div>
     <div class="pa-1 sales-staff-column">営業担当</div>
     <div class="pa-1 contract-date-column">契約日</div>
-    <div class="pa-1 state-date-column">開始日</div>
+    <div class="pa-1 start-date-column">開始日</div>
     <div class="pa-1 end-date-column">終了日</div>
     <div class="pa-1 contract-manager-column">契約責任者</div>
     <div class="pa-1 edit-btn-column"></div>
   </div>
-  <div class="d-flex list-row mt-4 mx-4">
-    <!-- v-for="item in contracts" :key="item.contractNum" -->
-    <div class="pa-1 contract-num-column">{{contractNum}}</div>
-    <div class="pa-1 contractor-column flex-grow-1">{{contractorName}}</div>
-    <div class="pa-1 service-user-column flex-grow-1">{{serviceUserName}}</div>
-    <div class="pa-1 service-name-column flex-grow-1">{{serviceName}}</div>
-    <div class="pa-1 update-num-column">{{updateNum}}</div>
-    <div class="pa-1 apply-num-column">{{applyNum}}</div>
-    <div class="pa-1 sales-staff-column">{{salesStaffName}}</div>
-    <div class="pa-1 contract-date-column">{{contractDate}}</div>
-    <div class="pa-1 state-date-column">{{startDate}}</div>
-    <div class="pa-1 end-date-column">{{endDate}}</div>
-    <div class="pa-1 contract-manager-column">{{contractManagerName}}</div>
-    <div class="pa-1 edit-btn-column"><v-btn>編集</v-btn></div>
+  <div class="d-flex list-row mt-4 mx-4"
+    v-for="item in contracts" :key="item.contractId"
+  >
+    <div class="pa-1 contract-num-column">{{item.contractId}}</div>
+    <div class="pa-1 contractor-column flex-grow-1">{{item.contractorName}}</div>
+    <div class="pa-1 service-user-column flex-grow-1">{{item.userName}}</div>
+    <div class="pa-1 update-count-column">{{item.renewalCount}}</div>
+    <div class="pa-1 sales-staff-column">{{item.salesStaffName}}</div>
+    <div class="pa-1 contract-date-column">{{item.contractDate}}</div>
+    <div class="pa-1 start-date-column">{{ item.validStartDate}}</div>
+    <div class="pa-1 end-date-column">{{ item.validEndDate}}</div>
+    <div class="pa-1 contract-manager-column">{{item.contractManagerName}}</div>
+    <div class="pa-1 edit-btn-column"><v-btn x-small>Edit</v-btn></div>
   </div>
   <div class="mt-4 mx-4">
     <AddContractDialog />
@@ -36,18 +33,18 @@
 </template>
 
 <script lang="ts">
-import{ defineComponent } from '@vue/composition-api'
-import{ useRouter } from '@nuxtjs/composition-api'
-import AddContractDialog from './AddContractDialog.vue';
+import { computed, defineComponent } from '@vue/composition-api'
+import { useRouter } from '@nuxtjs/composition-api'
+import { contractListStore } from '~/store';
 
 export default defineComponent ({
-  components: { AddContractDialog },
   setup(){
     const router = useRouter()
+    const contracts = contractListStore.contracts
     const handleClickSignInButton = () => {
       router.push('/ContractManage')
     }
-    return {handleClickSignInButton}
+    return {contracts, handleClickSignInButton}
   }
 });
 </script>
@@ -60,6 +57,7 @@ export default defineComponent ({
 }
 .list-row{
   background-color: white;
+  text-align: center;
 }
 .contract-num-column{
   width: 72px;
@@ -73,26 +71,26 @@ export default defineComponent ({
 .service-name-column{
   min-width: 152px
 }
-.update-num-column{
+.update-count-column{
   width: 72px;
 }
 .apply-num-column{
   width: 72px;
 }
 .sales-staff-column{
-  max-width: 152px;
+  width: 152px;
 }
 .contract-date-column{
   width: 96px;
 }
-.state-date-column{
+.start-date-column{
   width: 96px;
 }
 .end-date-column{
   width: 96px;
 }
 .contract-manager-column{
-  max-width: 152px;
+  width: 152px;
 }
 .edit-btn-column{
   width:48px;
