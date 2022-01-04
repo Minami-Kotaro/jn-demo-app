@@ -18,7 +18,7 @@ export default class ContractListModule extends VuexModule {
   @Action
   async getContracts() {
     const resp = await Get<ContractListResponse[]>(
-      "/contracts/",
+      "contracts",
       undefined,
       undefined,
       undefined
