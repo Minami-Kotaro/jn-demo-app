@@ -45,7 +45,6 @@ export default defineComponent ({
 
     const handleClickSignInButton = (): void => {
       loginStore.SignIn(loginStore.loginForm)
-      contractListStore.getContracts()
     }
     return {
       mailAddress,

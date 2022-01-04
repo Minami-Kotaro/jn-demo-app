@@ -8,22 +8,7 @@ import { Get } from "./http/httpClient"
   stateFactory: true,
 })
 export default class ContractListModule extends VuexModule {
-  contracts: ContractListResponse[] = [
-    {
-      contractId: 0,
-      contractorName: "",
-      contractManagerName: "",
-      contractManagerMailAddress: "",
-      userName: "",
-      userMailAddress: "",
-      renewalCount: 0,
-      salesStaffName: "",
-      contractDate: new Date(),
-      validStartDate: new Date(),
-      validEndDate: new Date(),
-      isDeleted: false,
-    },
-  ]
+  contracts: ContractListResponse[] = []
 
   @Mutation
   SET_CONTRACTS(data: ContractListResponse[]) {

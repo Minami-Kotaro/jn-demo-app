@@ -20,9 +20,9 @@
     <div class="pa-1 service-user-column flex-grow-1">{{item.userName}}</div>
     <div class="pa-1 update-count-column">{{item.renewalCount}}</div>
     <div class="pa-1 sales-staff-column">{{item.salesStaffName}}</div>
-    <div class="pa-1 contract-date-column">{{item.contractDate}}</div>
-    <div class="pa-1 start-date-column">{{ item.validStartDate}}</div>
-    <div class="pa-1 end-date-column">{{ item.validEndDate}}</div>
+    <div class="pa-1 contract-date-column">{{formatDate(item.contractDate)}}</div>
+    <div class="pa-1 start-date-column">{{formatDate(item.validStartDate)}}</div>
+    <div class="pa-1 end-date-column">{{formatDate(item.validEndDate)}}</div>
     <div class="pa-1 contract-manager-column">{{item.contractManagerName}}</div>
     <div class="pa-1 edit-btn-column"><v-btn x-small>Edit</v-btn></div>
   </div>
@@ -33,18 +33,29 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from '@vue/composition-api'
+import { computed, defineComponent} from '@vue/composition-api'
 import { useRouter } from '@nuxtjs/composition-api'
 import { contractListStore } from '~/store';
 
 export default defineComponent ({
   setup(){
     const router = useRouter()
-    const contracts = contractListStore.contracts
+    const contracts = computed(() => contractListStore.contracts);
     const handleClickSignInButton = () => {
       router.push('/ContractManage')
     }
-    return {contracts, handleClickSignInButton}
+    function formatDate(data:Date){
+      const date = new Date(data)
+      const year = date.getFullYear()
+      const month = date.getMonth()+1
+      const day = date.getDate();
+      return `${year}/${month}/${day}`
+    }
+
+    //created
+    contractListStore.getContracts()
+
+    return {contracts, handleClickSignInButton,formatDate}
   }
 });
 </script>
